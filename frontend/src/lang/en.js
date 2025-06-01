@@ -42,6 +42,8 @@ export default {
     blockKeywords: 'Block keywords',
     onePerLine: 'One per line',
     blockUsers: 'Block users',
+    onlyAllowUsers: 'Whitelist users',
+    onlyAllowUsersHint: 'Only messages from whitelisted users will be shown (overrides block users)',
     blockMedalLevel: 'Block medal level lower than',
 
     advanced: 'Advanced',

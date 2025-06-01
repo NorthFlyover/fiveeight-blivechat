@@ -1,0 +1,24 @@
+services:
+  blivechat:
+    build: .
+    # command: npm start
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./frontend/dist
+          target: /mnt/data/frontend/dist
+          ignore:
+            - frontend/node_modules/
+        - action: sync+restart
+          path: .
+          target: /root/blivechat
+          ignore:
+            - frontend/
+        - action: rebuild
+          path: ./requirements.txt
+        - action: rebuild
+          path: ./blivedm/requirements.txt
+        - action: rebuild
+          path: ./blcsdk/requirements.txt
+        - action: rebuild
+          path: ./frontend/package.json

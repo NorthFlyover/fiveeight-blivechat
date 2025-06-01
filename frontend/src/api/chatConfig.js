@@ -17,6 +17,7 @@ export const DEFAULT_CONFIG = {
   blockNotMobileVerified: false,
   blockKeywords: '',
   blockUsers: '',
+  onlyAllowUsers: '',
   blockMedalLevel: 0,
 
   showDebugMessages: false,

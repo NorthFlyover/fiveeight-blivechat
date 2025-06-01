@@ -62,6 +62,11 @@ export default {
       blockUsers = blockUsers.filter(user => user !== '')
       return new Set(blockUsers)
     },
+    onlyAllowUsersSet() {
+      let onlyAllowUsers = this.config.onlyAllowUsers.split('\n')
+      onlyAllowUsers = onlyAllowUsers.filter(user => user !== '')
+      return new Set(onlyAllowUsers)
+    },
     emoticonsTrie() {
       let res = new trie.Trie()
       for (let emoticons of [this.config.emoticons, this.textEmoticons]) {
@@ -419,7 +424,11 @@ export default {
       return true
     },
     filterByAuthorName(authorName) {
-      return !this.blockUsersSet.has(authorName)
+      if (this.onlyAllowUsersSet.size !== 0) {
+        return this.onlyAllowUsersSet.has(authorName)
+      } else {
+        return !this.blockUsersSet.has(authorName)
+      }
     },
     mergeSimilarText(content) {
       if (!this.config.mergeSimilarDanmaku) {

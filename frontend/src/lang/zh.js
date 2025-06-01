@@ -42,6 +42,8 @@ export default {
     blockKeywords: '屏蔽关键词',
     onePerLine: '一行一个',
     blockUsers: '屏蔽用户',
+    onlyAllowUsers: '白名单用户',
+    onlyAllowUsersHint: '只有白名单用户的消息才会显示(覆盖屏蔽用户功能)',
     blockMedalLevel: '屏蔽当前直播间勋章等级低于',
 
     advanced: '高级',

@@ -140,6 +140,10 @@
             <el-form-item :label="$t('home.blockUsers')">
               <el-input v-model="form.blockUsers" type="textarea" :rows="5" :placeholder="$t('home.onePerLine')"></el-input>
             </el-form-item>
+            <el-form-item :label="$t('home.onlyAllowUsers')">
+              <el-input v-model="form.onlyAllowUsers" type="textarea" :rows="5" :placeholder="$t('home.onePerLine')"></el-input>
+              <p v-if="form.onlyAllowUsers!==''">{{ $t('home.onlyAllowUsersHint') }}</p>
+            </el-form-item>
           </el-tab-pane>
 
           <el-tab-pane :label="$t('home.advanced')">

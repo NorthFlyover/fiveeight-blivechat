@@ -22,6 +22,7 @@
               ></text-message>
               <paid-message :key="message.id" v-else-if="message.type === MESSAGE_TYPE_GIFT"
                 class="style-scope yt-live-chat-item-list-renderer"
+                :data-author-name="message.authorName"
                 :time="message.time"
                 :avatarUrl="message.avatarUrl"
                 :authorName="getShowAuthorName(message)"
@@ -31,6 +32,7 @@
               ></paid-message>
               <membership-item :key="message.id" v-else-if="message.type === MESSAGE_TYPE_MEMBER"
                 class="style-scope yt-live-chat-item-list-renderer"
+                :data-author-name="message.authorName"
                 :time="message.time"
                 :avatarUrl="message.avatarUrl"
                 :authorName="getShowAuthorName(message)"
@@ -39,6 +41,7 @@
               ></membership-item>
               <paid-message :key="message.id" v-else-if="message.type === MESSAGE_TYPE_SUPER_CHAT"
                 class="style-scope yt-live-chat-item-list-renderer"
+                :data-author-name="message.authorName"
                 :time="message.time"
                 :avatarUrl="message.avatarUrl"
                 :authorName="getShowAuthorName(message)"

@@ -42,6 +42,8 @@ export default {
     blockKeywords: 'ブロックキーワード',
     onePerLine: '1行に1つずつ',
     blockUsers: 'ブロックユーザー',
+    onlyAllowUsers: 'ホワイトリストユーザー',
+    onlyAllowUsersHint: 'ホワイトリストユーザーのメッセージのみが表示されます（ブロックユーザーをオーバーライドします）',
     blockMedalLevel: 'ブロック勲章等級がx未満',
 
     advanced: 'アドバンスド',
