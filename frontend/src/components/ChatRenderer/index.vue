@@ -17,7 +17,7 @@
                 :authorName="message.authorName"
                 :authorType="message.authorType"
                 :privilegeType="message.privilegeType"
-                :richContent="getShowRichContent(message)"
+                :contentParts="getShowContentParts(message)"
                 :repeated="message.repeated"
               ></text-message>
               <paid-message :key="message.id" v-else-if="message.type === MESSAGE_TYPE_GIFT"
@@ -156,7 +156,7 @@ export default {
     },
     getGiftShowNameAndNum: constants.getGiftShowNameAndNum,
     getShowContent: constants.getShowContent,
-    getShowRichContent: constants.getShowRichContent,
+    getShowContentParts: constants.getShowContentParts,
     getShowAuthorName: constants.getShowAuthorName,
 
     addMessage(message) {
@@ -195,7 +195,7 @@ export default {
       }
       return false
     },
-    mergeSimilarGift(authorName, price, _freePrice, giftName, num) {
+    mergeSimilarGift(authorName, price, _totalFreeCoin, giftName, num) {
       for (let message of this.iterRecentMessages(5)) {
         if (
           message.type === constants.MESSAGE_TYPE_GIFT
@@ -204,7 +204,7 @@ export default {
         ) {
           this.updateMessage(message.id, { $add: {
             price: price,
-            // freePrice: freePrice, // 暂时没用到
+            // totalFreeCoin: totalFreeCoin, // 暂时没用到
             num: num
           } })
           return true

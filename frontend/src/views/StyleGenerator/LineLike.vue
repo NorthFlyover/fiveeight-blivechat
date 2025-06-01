@@ -121,6 +121,13 @@
               </el-form-item>
             </el-col>
           </el-row>
+          <el-row :gutter="20">
+            <el-col :xs="24" :sm="12">
+              <el-form-item :label="$t('stylegen.messageReverseScroll')">
+                <el-switch v-model="form.messageReverseScroll"></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-collapse-item>
 
         <el-collapse-item>
@@ -175,24 +182,24 @@
           <el-row :gutter="20">
             <el-col :xs="24" :sm="12">
               <el-form-item :label="$t('stylegen.messageBgColor')">
-                <el-color-picker v-model="form.messageBgColor" show-alpha></el-color-picker>
+                <el-color-picker v-model="form.messageBgColor"></el-color-picker>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="12">
               <el-form-item :label="$t('stylegen.memberMessageBgColor')">
-                <el-color-picker v-model="form.memberMessageBgColor" show-alpha></el-color-picker>
+                <el-color-picker v-model="form.memberMessageBgColor"></el-color-picker>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row :gutter="20">
             <el-col :xs="24" :sm="12">
               <el-form-item :label="$t('stylegen.moderatorMessageBgColor')">
-                <el-color-picker v-model="form.moderatorMessageBgColor" show-alpha></el-color-picker>
+                <el-color-picker v-model="form.moderatorMessageBgColor"></el-color-picker>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="12">
               <el-form-item :label="$t('stylegen.ownerMessageBgColor')">
-                <el-color-picker v-model="form.ownerMessageBgColor" show-alpha></el-color-picker>
+                <el-color-picker v-model="form.ownerMessageBgColor"></el-color-picker>
               </el-form-item>
             </el-col>
           </el-row>
@@ -355,6 +362,7 @@ export const DEFAULT_CONFIG = {
   messageColor: '#000000',
   emoticonSize: 18,
   largeEmoticonSize: 36,
+  messageReverseScroll: false,
 
   showTime: false,
   timeFont: 'Noto Sans SC',
@@ -524,7 +532,13 @@ yt-live-chat-text-message-renderer #message::before {
 
 yt-live-chat-text-message-renderer #message:has(.emoji.blc-large-emoji)::before {
   ${this.form.showLargeEmoticonBg ? '' : 'content: none;'}
-}`
+}
+
+${!this.form.messageReverseScroll ? '' : `yt-live-chat-item-list-renderer,
+yt-live-chat-item-list-renderer #items > * {
+  rotate: 180deg;
+  backface-visibility: hidden;
+}`}`
     },
     timeStyle() {
       return common.getTimeStyle(this.form)

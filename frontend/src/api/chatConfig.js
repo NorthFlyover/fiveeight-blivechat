@@ -26,7 +26,9 @@ export const DEFAULT_CONFIG = {
   giftUsernamePronunciation: '',
   importPresetCss: false,
 
-  emoticons: [] // [{ keyword: '', url: '' }, ...]
+  emoticons: [], // [{ keyword: '', url: '' }, ...]
+
+  templateUrl: '',
 }
 
 export function deepCloneDefaultConfig() {

@@ -221,6 +221,10 @@
               <el-button type="primary" icon="el-icon-plus" @click="addEmoticon">{{$t('home.addEmoticon')}}</el-button>
             </p>
           </el-tab-pane>
+
+          <el-tab-pane :label="$t('home.template')" lazy>
+            <template-select v-model="form.templateUrl"></template-select>
+          </el-tab-pane>
         </el-tabs>
       </el-form>
     </p>
@@ -253,12 +257,14 @@
 import _ from 'lodash'
 import download from 'downloadjs'
 
+import TemplateSelect from './TemplateSelect'
 import { mergeConfig } from '@/utils'
 import * as mainApi from '@/api/main'
 import * as chatConfig from '@/api/chatConfig'
 
 export default {
   name: 'Home',
+  components: { TemplateSelect },
   data() {
     return {
       serverConfig: {
@@ -388,7 +394,8 @@ export default {
     getUnvalidatedRoomUrl(isTestRoom) {
       // 重要的字段放在前面，因为如果被截断就连接不了房间了
       let frontFields = {
-        roomKeyType: this.form.roomKeyType
+        roomKeyType: this.form.roomKeyType,
+        templateUrl: this.form.templateUrl,
       }
       let backFields = {
         lang: this.$i18n.locale,
